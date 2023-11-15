@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "CFRzxGNMBmXtI8Yw2LJehinx9KNWvpkZzXYIJI+2dcqzhKMdaIcFzDMnfV6ekwKkd1rVAw1toxZAy1fyuP3hcA==",
+  "success": true,
+  "projectFilePath": "C:\\study-projects\\WpfApp1\\WpfApp1\\VideoEditor.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\adm\\.nuget\\packages\\libvlcsharp\\3.8.2\\libvlcsharp.3.8.2.nupkg.sha512",
+    "C:\\Users\\adm\\.nuget\\packages\\libvlcsharp.wpf\\3.8.2\\libvlcsharp.wpf.3.8.2.nupkg.sha512"
+  ],
+  "logs": []
+}

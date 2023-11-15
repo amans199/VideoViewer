@@ -1,0 +1,56 @@
+﻿<Window x:Class="VideoEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+        KeyDown="Window_KeyDown"
+        Title="Video Viewer" Height="450" Width="800">
+    <Grid Background="#FF333333">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <MediaElement Name="videoPlayer" Grid.Row="0" 
+              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+              LoadedBehavior="Manual" Stretch="Uniform" 
+              MouseLeftButtonDown="VideoPlayer_MouseLeftButtonDown"
+              MediaEnded="videoPlayer_MediaEnded"
+              Focusable="True" />
+
+
+        <!-- Overlay TextBlock -->
+        <TextBlock Name="pauseOverlay" Text="Paused" Visibility="Hidden"
+               Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Foreground="White" FontSize="36" FontWeight="Bold"
+               Background="#66000000"/>
+
+        <!-- Control Bar Background -->
+        <Border Grid.Row="1" Background="#FF444444" Padding="10" CornerRadius="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!-- Control Buttons -->
+                <Button Content="Load" Margin="5" Padding="5" Click="LoadButton_Click"/>
+                <Button Content="▶ Play" Margin="5" Padding="5" Click="PlayButton_Click"/>
+                <Button Content="⏸ Pause" Margin="5" Padding="5" Click="PauseButton_Click"/>
+                <Button Content="⏹ Stop" Margin="5" Padding="5" Click="StopButton_Click"/>
+                <Button Content="Full Screen" Click="FullScreenButton_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FF555555"/>
+            <Setter Property="BorderBrush" Value="#FF777777"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF777777"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+</Window>
