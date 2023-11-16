@@ -1,6 +1,8 @@
 ﻿<Window x:Class="VideoEditor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+        xmlns:local="clr-namespace:VideoEditor"
+        xmlns:models="clr-namespace:VideoEditor.Models"
         KeyDown="Window_KeyDown"
         Title="Video Viewer" Height="450" Width="800">
     <Grid Background="#FF333333">
@@ -9,12 +11,30 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+
+        <ListView Name="videoFilesListView" Grid.Row="0" Margin="10" ItemsPanel="{DynamicResource CardItemsPanelTemplate}" SelectionChanged="VideoFilesListView_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type models:VideoItem}">
+                    <Border Background="White" CornerRadius="5" Padding="10" Margin="5">
+                        <StackPanel>
+                            <Image Source="{Binding CoverImage}" Height="100" Stretch="UniformToFill"/>
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5"/>
+                            <TextBlock Text="{Binding Path}" TextWrapping="Wrap" Margin="5"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
         <MediaElement Name="videoPlayer" Grid.Row="0" 
               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
               LoadedBehavior="Manual" Stretch="Uniform" 
               MouseLeftButtonDown="VideoPlayer_MouseLeftButtonDown"
               MediaEnded="videoPlayer_MediaEnded"
-              Focusable="True" />
+              Focusable="True">
+        </MediaElement>
+
+      
 
 
         <!-- Overlay TextBlock -->
@@ -32,6 +52,7 @@
                 <Button Content="⏸ Pause" Margin="5" Padding="5" Click="PauseButton_Click"/>
                 <Button Content="⏹ Stop" Margin="5" Padding="5" Click="StopButton_Click"/>
                 <Button Content="Full Screen" Click="FullScreenButton_Click"/>
+                <Button Content="Browse Files" Margin="5" Padding="5" Click="BrowseFilesButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>
